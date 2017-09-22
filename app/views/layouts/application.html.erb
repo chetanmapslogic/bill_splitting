@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <title>Bil Split</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div id="wrapper">
+    <header>
+      <div id="header-ul-wrapper">
+        <ul id="header-ul">
+          <li><a>Add a Bill</a></li>
+          <li><a>Debt Listings</a></li>
+          <li><a>Price Comparison</a></li>
+          <li>
+            <% if user_signed_in? %>
+              <%= link_to current_user.username, user_path(current_user.id) %> <%= link_to "(Sign Out)", destroy_user_session_path, :method => :delete %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </header>
+    
+    <div id="container">
+      <div id="main-content">
+        <!-- Flash messages (apparently required by Devise) -->
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+    
+        <!-- This will be filled in by individual pages -->
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
