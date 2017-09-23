@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  total: 9.99
+  date: 2017-09-22
+  user_id: 1
+  vendor_id: 1
+
+two:
+  name: MyString
+  total: 9.99
+  date: 2017-09-22
+  user_id: 1
+  vendor_id: 1

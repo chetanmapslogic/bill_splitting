@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang='en'>
 <head>
-  <title>Bil Split</title>
+  <title>Split</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'https://fonts.googleapis.com/css?family=Voltaire|Francois+One' %>
+  <%= stylesheet_link_tag    'https://fonts.googleapis.com/css?family=Lato:400,900,700' %>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -12,12 +14,13 @@
     <header>
       <div id="header-ul-wrapper">
         <ul id="header-ul">
-          <li><a>Add a Bill</a></li>
-          <li><a>Debt Listings</a></li>
-          <li><a>Price Comparison</a></li>
+          <li><a href="/expenses">Add Bills</a></li>
+          <li><a href="/debt">Debt Listings</a></li>
           <li>
             <% if user_signed_in? %>
-              <%= link_to current_user.username, user_path(current_user.id) %> <%= link_to "(Sign Out)", destroy_user_session_path, :method => :delete %>
+              <%= current_user.username %> <%= link_to "(Sign Out)", destroy_user_session_path, :method => :delete %>
+            <% else %>
+              <%= link_to "Login", new_user_session_path %> (<%= link_to "Register", new_user_registration_path %>)
             <% end %>
           </li>
         </ul>
@@ -26,11 +29,8 @@
     
     <div id="container">
       <div id="main-content">
-        <!-- Flash messages (apparently required by Devise) -->
         <p class="notice"><%= notice %></p>
         <p class="alert"><%= alert %></p>
-    
-        <!-- This will be filled in by individual pages -->
         <%= yield %>
       </div>
     </div>

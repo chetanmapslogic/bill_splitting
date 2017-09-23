@@ -1,0 +1,72 @@
+<% if user_signed_in? %> 
+  <div class="form-horizontal" id="shopping_form">
+    <hr>
+     <h3 id="shopping_trip_header">Add a new Bill.</h3>
+     <hr>
+     <hr>
+    <%= simple_form_for @purchase, url: bills_path , :method => :post do |f| %>
+      <% if @purchase.errors.full_messages.any? %>
+        <% @purchase.errors.full_messages.each do |error_message| %>
+          <%= error_message if @purchase.errors.full_messages.first == error_message %> <br />
+        <% end %>
+      <% end %>
+      <div class="form-group">
+        <label for="inputEmail3" class="col-md-4 control-label">Date Purchased</label>
+        <div class="col-md-8">
+          <%= f.text_field :date_purchased, as: :date, value: f.object.try(:strftime,"%m/%d/%Y"), class: 'form-control datepicker' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="inputEmail3" class="col-md-4 control-label">Location</label>
+        <div class="col-md-8">
+          <%= f.text_field :location, required: false, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="inputEmail3" class="col-md-4 control-label">Cost</label>
+        <div class="col-md-8">
+          <%= f.number_field :cost, required: false, :maxlength => 10, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="inputEmail3" class="col-md-4 control-label">Event</label>
+        <div class="col-md-8">
+          <%= f.select :event_id, options_for_select(Event.all.collect { | event | [event.name, event.id] }), {}, {} %>
+        </div>
+      </div>
+
+      <div class="form">
+        <%= f.association :users, as: :check_boxes, label: 'Splitters', label_method: :username, collection: User.where('id NOT IN (?)',[current_user.id]).order(:username), include_blank: false, include_hidden: false %>
+      </div>
+      <div class="submit">
+         <%= f.button :submit, "Add Bills", class: 'btn btn-success btn-block' %>
+       </div>
+
+    <% end %>
+  </div>
+  
+   <br />
+   <hr />
+  
+<% else %>
+  <div class="jumbotron">
+    <h1>Welcome, new user!</h1>
+    <p class="lead">
+      You must sign in or sign up.
+    </p>
+    <div class="row-fluid">
+      <div class="buttonHolder">
+        <%= link_to "Sign In", new_user_session_path, class: "btn btn-success" %>
+        <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-success" %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  $('.datepicker').datepicker();
+  
+</script>

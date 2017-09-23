@@ -10,11 +10,78 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
  */
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+html, body, #container { 
+    height: 100%; 
+}
+
+#wrapper {
+   min-height: 100%;
+   position: relative;
+}
+
+body {
+    background-color: #F6F9FB;
+    font-family: 'Lato', 'Francois One', sans-serif;
+    width: 100%;
+    margin: 0px;
+    height: 100%;
+}
+
+body > #container {
+    position: relative;
+    height: auto; 
+    // margin-bottom: 3em;
+    // flex-grow: 1;
+    // overflow: auto;
+    min-height: 100%;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Voltaire', sans-serif;
+    margin-top: 0;
+    padding-top: 12px;
+}
+
+h3 {
+    font-family: 'Lato', 'Francois One', sans-serif;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+a:link {
+    text-decoration: none;
+    color: #000;
+}
+
+a:visited {
+    color: #000;
+}
+
+a:hover {
+    color: #797979;
+}
+
+footer {
+    bottom: 0px;
+    padding-top: 5px;
+    border-top: 1px solid #000;
+    color: #777;
+    clear: both;
+    z-index: 10;
+    height: 4em;
+    position: absolute;
+    bottom: 0;
+    width: 80%;
+    left: 10%;
+}
+
 li {
     display: inline-block;
     padding: 0px 30px;
@@ -24,4 +91,191 @@ li {
 li.default-li {
     display: list-item;
     padding: 0;
+}
+
+.stay-black {
+    color: #000;
+}
+
+.stay-black:hover {
+    color: #797979;
+}
+
+.pull-right {
+    float: right;
+    padding: 0px 60px;
+    margin-right: -81px;
+}
+
+.footer-overline {
+    position: fixed;
+    background: #000;
+    height: 1px;
+    bottom: 5%;
+}
+
+#header-bar {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 55px;
+    background: #26c1dc;
+    opacity: 0.9;
+}
+
+#header-ul-wrapper {
+    position: relative;
+    width: 100%;
+    margin-top: 0;
+    margin-right: auto;
+    margin-left: auto;
+    height: 55px;
+    background: #26c1dc;
+    opacity: 0.9;
+}
+
+#header-ul {
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    /*margin: 15px 0 5px 0;*/
+}
+
+#header-ul li {
+    float: left;
+    text-align: center;
+    width: 25%;
+    margin: 10px 0 0 0;
+    padding: 6px 0;   
+}
+
+#header-ul li a {
+    font-size: 1.25em;
+}
+
+#main-content {
+    margin-left: 17.85%;
+    font-size: 150%;
+    width: 64.3%;
+    padding-bottom: 3em;
+    max-height: 70%;
+}
+
+#footer-bar {
+    width: 100%;
+    height: 55px;
+    background: #9CADB8;
+    opacity: 0.9;
+}
+
+#footer-ul {
+    display: inline-block;
+    width: 100%;
+}
+
+#bananafy-button {
+    margin-left: 215px;
+    border: 3px solid #547600;
+    background-color: #26c1dc;
+}
+
+.lead {
+    text-align: center;
+}
+
+#pform-error {
+    color: red;
+}
+
+/* User sign in and sign forms. */
+.border-form-div {
+    max-width: 300px;
+    padding: 19px 29px 29px;
+    margin: 0 auto 20px;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+.border-form-div .form-signin-heading,
+.border-form-div .field {
+    margin-bottom: 10px;
+}
+.border-form-div input[type="text"],
+.border-form-div input[type="email"],
+.border-form-div input[type="password"] {
+    font-size: 16px;
+    height: auto;
+    margin-bottom: 15px;
+    padding: 7px 9px;
+}
+
+.buttonHolder {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.submit {
+    margin-top: 41px !important;
+    margin-bottom: 10px;
+    margin: 0 auto;
+    width: 30%;
+}
+
+#cost {
+    margin-left: 1.45em;
+}
+
+#edit_link a {
+    color: #26c1dc;
+    opacity: 1.0;
+    filter: alpha(opacity=100);
+}
+
+#edit_link a:hover {
+    opacity: 0.5;
+    filter: alpha(opacity=40);
+}
+
+#edit_field.field {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.actions {
+    margin-bottom: 0.75em;
+}
+
+.form {
+    margin-top: 0.5em;
+    width: 524px;
+    margin: 0 auto;
+    display: block;
+    clear: both;
+}
+
+.form_input {
+    width: 100%;
+}
+
+#shopping_trip_table {
+    // text-align: center;
+    // width: 50%;
+}
+
+.debt_button {
+    margin: auto;
+    display: block;
+}
+
+.checkbox{
+	margin-left: 136px;
+}
+.form-control{
+	width:50%;
 }
