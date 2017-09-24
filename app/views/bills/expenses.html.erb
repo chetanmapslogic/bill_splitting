@@ -1,7 +1,7 @@
 <% if user_signed_in? %> 
-  <div class="form-horizontal" id="shopping_form">
+  <div class="form-horizontal">
     <hr>
-     <h3 id="shopping_trip_header">Add a new Bill.</h3>
+     <h3>Add a new Bill.</h3>
      <hr>
      <hr>
     <%= simple_form_for @purchase, url: bills_path , :method => :post do |f| %>
