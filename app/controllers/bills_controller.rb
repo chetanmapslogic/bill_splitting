@@ -1,19 +1,19 @@
 class BillsController < ApplicationController
   
-	def expenses
+  def expenses
     @purchase = Purchase.new
     @user = current_user
   end
 
   def create
-  	@purchase = Purchase.new(purchase_params)
-  	if @purchase.save
-  		splitter_ids = params[:purchase][:user_ids]
-  		Debt.calculate_debths(splitter_ids,@purchase.id)
-  		redirect_to debt_path
-  	else
-  		render :expenses 
-  	end
+    @purchase = Purchase.new(purchase_params)
+    if @purchase.save
+       splitter_ids = params[:purchase][:user_ids]
+       Debt.calculate_debths(splitter_ids,@purchase.id)
+       redirect_to debt_path
+    else
+       render :expenses 
+    end
   end
 
   def debt
