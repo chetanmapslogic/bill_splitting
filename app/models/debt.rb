@@ -31,7 +31,7 @@ class Debt < ActiveRecord::Base
 		end
 		
 		debts = self.where(debtor: user)
-		debts.each do |debt|
+	  debts.each do |debt|
 			if owed.has_key?(debt.creditor.username)
         owed[debt.creditor.username] -= debt.cost
       else 
