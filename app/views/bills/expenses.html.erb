@@ -7,7 +7,7 @@
     <%= simple_form_for @purchase, url: bills_path , :method => :post do |f| %>
       <% if @purchase.errors.full_messages.any? %>
         <% @purchase.errors.full_messages.each do |error_message| %>
-          <%= error_message if @purchase.errors.full_messages.first == error_message %> <br />
+          <%= error_message%> <br />
         <% end %>
       <% end %>
       <div class="form-group">
@@ -39,7 +39,17 @@
       </div>
 
       <div class="form">
-        <%= f.association :users, as: :check_boxes, label: 'Splitters', label_method: :username, collection: User.where('id NOT IN (?)',[current_user.id]).order(:username), include_blank: false, include_hidden: false %>
+        <label for="inputEmail3" class="col-md-4 control-label">Splitters</label>
+        <div class="col-md-8">
+          <input type ="hidden" maxlength="10" class="form-control" size="10" type="number" name="purchase[user_ids][]" id ="hidden_user_id"  />
+          <%  User.all.each do |user| %>
+            <%if user.id != current_user.id%>
+              <br>
+              <%= check_box_tag 'purchase[user_ids][]', user.id, false, :id => user.id %>
+              <%=  user.username %> 
+            <% end %>
+          <% end %>
+        </div>
       </div>
       <div class="submit">
          <%= f.button :submit, "Add Bills", class: 'btn btn-success btn-block' %>

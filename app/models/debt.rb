@@ -6,10 +6,10 @@ class Debt < ActiveRecord::Base
 	def self.calculate_debths(splitter_ids,purchase_id)
 		purchase = Purchase.find_by_id(purchase_id)
 		splitter_ids = splitter_ids << purchase.user_id.to_s
-		percentage = 1.0 / splitter_ids.length.to_f
+		percentage = 1.0 / (splitter_ids.length.to_f - 1)
 		debt_cost = purchase.cost * percentage
 
-		splitter_ids.each do |splitter_id|
+		splitter_ids.reject(&:empty?).each do |splitter_id|
 			if splitter_id != purchase.user_id
 				purchase.debts.build(:cost => debt_cost, :creditor_id => purchase.user_id, :debtor_id => splitter_id)
 				purchase.save
