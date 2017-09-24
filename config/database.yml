@@ -4,10 +4,10 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
 #
-default: &default
-  adapter: sqlite3
-  pool: 5
-  timeout: 5000
+# default: &default
+#   adapter: sqlite3
+#   pool: 5
+#   timeout: 5000
 
 development:
   <<: *default
@@ -21,5 +21,7 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  database: bill_split_db
+  adapter: postgresql
+  host: localhost
+  password:
