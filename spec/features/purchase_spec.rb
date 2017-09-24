@@ -1,6 +1,7 @@
 require 'rails_helper.rb'
 
 RSpec.feature "purchase" do
+	
   background do
     user = create(:user)
     sign_in_with user

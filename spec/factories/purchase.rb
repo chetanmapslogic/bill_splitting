@@ -4,6 +4,7 @@ FactoryGirl.define do
     location 'Mumbai'
     cost 50
     event_id 1
-    purchase_user_ids_2 [2,3]
+    id 1
+    # user_ids [3]
   end
 end
